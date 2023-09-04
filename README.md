@@ -1,49 +1,60 @@
-This repository contains a Jupyter Notebook (swdish_insurance_linear_regression.ipynb) that demonstrates linear regression analysis on the Auto Insurance in Sweden dataset. The notebook explores the relationship between the number of claims and total payment for car insurance in Sweden.
+# Linear Regression for Auto Insurance in Sweden
 
-Dataset
+## Description
+This repository contains a Jupyter Notebook (`swdish_insurance_linear_regression.ipynb`) that demonstrates linear regression analysis on the Auto Insurance in Sweden dataset. The notebook explores the relationship between the number of claims and total payment for car insurance in Sweden.
 
-The dataset used in this analysis is the "Auto Insurance in Sweden" dataset, which is available in the insurance.txt file within the repository. This dataset contains two columns: the number of claims and the total payment for each observation.
+## Dataset
+The dataset used in this analysis is the "Auto Insurance in Sweden" dataset, which is available in the `insurance.txt` file within the repository. The real dataset was used to demonstrate simple linear regression. The dataset is called the “Auto Insurance in Sweden” dataset and involves predicting the total payment for all the claims in thousands of Swedish Kronor (y) given the total number of claims (x).
 
-Requirements
+This means that for a new number of claims (x) we will be able to predict the total payment of claims (y).
 
+## Requirements
 To run the Jupyter Notebook and execute the code, you need the following dependencies:
 
-Python 3.x
-Jupyter Notebook
-NumPy
-Pandas
-Matplotlib
-Scikit-Learn
-You can install these dependencies using pip or any package manager of your choice.
+- Python 3.x
+- Jupyter Notebook
+- NumPy
+- Pandas
+- Matplotlib
 
-bash
-Copy code
-pip install numpy pandas matplotlib scikit-learn
-Usage
+## Overview
 
-Clone this repository to your local machine:
-bash
-Copy code
-git clone https://github.com/erenduyuk/Linear-Regression-Auto-Insurance-in-Sweden.git
-Navigate to the repository folder:
-bash
-Copy code
-cd Linear-Regression-Auto-Insurance-in-Sweden
-Open the Jupyter Notebook:
-bash
-Copy code
-jupyter notebook swdish_insurance_linear_regression.ipynb
-Run the notebook cell by cell to understand the linear regression analysis on the dataset.
-Analysis
+This repository contains code for optimizing a linear regression model using the gradient descent algorithm. The primary goal of this code is to find the optimal weight (w) and bias (b) parameters that minimize the mean squared error (MSE) between the predicted values and actual values of a dataset.
 
-The notebook provides a step-by-step explanation of the linear regression analysis, including data exploration, visualization, model training, and evaluation. You'll gain insights into how linear regression can be applied to predict insurance payments based on the number of claims.
+## Code Components
 
-Acknowledgments
+### 1. `compute_cost` Function
 
-This analysis was prepared by [Your Name] and is available under the license provided in this repository.
+The `compute_cost` function calculates the cost of the linear regression model given input data (`x`), actual output (`y`), weight (`w`), and bias (`b`). It uses the mean squared error (MSE) formula to measure the average squared difference between the predicted values and actual values.
 
-License
+### 2. `compute_gradient` Function
 
-This project is licensed under the MIT License.
+The `compute_gradient` function calculates the gradients of the cost function with respect to the weight (`w`) and bias (`b`). These gradients are essential for updating the model parameters during the gradient descent optimization process. The gradients are computed by taking the partial derivatives of the cost function.
 
-Replace [Your Name] with the actual name of the author or contributor of the code if necessary. You may also want to customize the README further based on specific details and context related to the code.
+### 3. `gradient_descent` Function
+
+The `gradient_descent` function implements the gradient descent algorithm for optimizing the linear regression model. It takes several parameters, including input data (`x`), actual output (`y`), initial weights (`w_in`) and bias (`b_in`), cost and gradient calculation functions (`cost_function` and `gradient_function`), learning rate (`alpha`), and the number of iterations (`num_iters`).
+
+During optimization, this function iteratively updates the weights and bias using the gradients computed by the `compute_gradient` function. It also stores the cost and weight history for analysis and prints the cost at regular intervals during training.
+
+### 4. Initialization and Training
+
+The code initializes the weight (`w`) and bias (`b`) to zero. It also specifies the number of iterations and the learning rate (`alpha`) for the gradient descent algorithm. These parameters should be chosen based on your specific problem and dataset.
+
+## Usage
+
+To use this code effectively, follow these steps:
+
+1. Import the necessary libraries at the beginning of your script, such as `math` and `copy`.
+
+2. Prepare your input data (`x_train`) and actual output (`y_train`) with your dataset.
+
+3. Choose appropriate values for the learning rate (`alpha`) and the number of iterations (`num_iters`) based on your problem.
+
+4. Call the `gradient_descent` function with your training data, parameters, and cost/gradient calculation functions to optimize the linear regression model.
+
+5. After training, the code will print the learned values of `w` and `b` found by the gradient descent algorithm.
+
+Note: There are additional parts of the code related to monitoring and debugging, such as saving the cost history and weight history. Additionally, there's a condition (`if i < 100000`) to prevent excessive resource consumption, which may not be necessary in all cases.
+
+Feel free to modify and adapt this code to your specific requirements and datasets.
